@@ -107,3 +107,44 @@ func BenchmarkHelloWorldAru(b *testing.B) {
 		HelloWorld("Syihab")
 	}
 }
+
+func BenchmarkHelloWorldSub(b *testing.B) {
+	b.Run("Syihab", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Syihab")
+		}
+	})
+	b.Run("Aru", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Aru")
+		}
+	})
+}
+
+func BenchmarkHelloWorldTable(b *testing.B) {
+	tests := []struct {
+		name     string
+		request  string
+		expected string
+	}{
+		{
+			name:    "Syihab",
+			request: "Syihab",
+		},
+		{
+			name:    "Aru",
+			request: "Aru",
+		},
+		{
+			name:    "SyihabAru",
+			request: "Syihab Dan Aru",
+		},
+	}
+	for _, test := range tests {
+		b.Run(test.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				HelloWorld(test.request)
+			}
+		})
+	}
+}
