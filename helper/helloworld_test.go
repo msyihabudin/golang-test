@@ -66,7 +66,7 @@ func TestSubTest(t *testing.T) {
 
 	t.Run("Aru", func(t *testing.T) {
 		result := HelloWorld("Aru")
-		require.Equal(t, "Hi Aru", result, "Result must be 'Hello Aru'")
+		require.Equal(t, "Hello Aru", result, "Result must be 'Hello Aru'")
 	})
 }
 
@@ -93,5 +93,17 @@ func TestHelloWorld_withtable(t *testing.T) {
 			result := HelloWorld(test.request)
 			require.Equal(t, test.expected, result)
 		})
+	}
+}
+
+func BenchmarkHelloWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Syihab")
+	}
+}
+
+func BenchmarkHelloWorldAru(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Syihab")
 	}
 }
