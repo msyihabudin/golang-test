@@ -1,9 +1,9 @@
 package helper
 
 import (
-	"testing"
 	"fmt"
 	"runtime"
+	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -59,12 +59,12 @@ func TestMain(m *testing.M) {
 }
 
 func TestSubTest(t *testing.T) {
-	t.Run("Syihab", func(t *testing.T){
+	t.Run("Syihab", func(t *testing.T) {
 		result := HelloWorld("Syihab")
 		require.Equal(t, "Hello Syihab", result, "Result must be 'Hello Syihab'")
 	})
 
-	t.Run("Aru", func(t *testing.T){
+	t.Run("Aru", func(t *testing.T) {
 		result := HelloWorld("Aru")
 		require.Equal(t, "Hi Aru", result, "Result must be 'Hello Aru'")
 	})
@@ -72,18 +72,18 @@ func TestSubTest(t *testing.T) {
 
 func TestHelloWorld_withtable(t *testing.T) {
 	tests := []struct {
-		name string
-		request string
+		name     string
+		request  string
 		expected string
-	} {
+	}{
 		{
-			name: "HelloWorld(Syihab)",
-			request: "Syihab",
+			name:     "HelloWorld(Syihab)",
+			request:  "Syihab",
 			expected: "Hello Syihab",
 		},
 		{
-			name: "HelloWorld(Aru)",
-			request: "Aru",
+			name:     "HelloWorld(Aru)",
+			request:  "Aru",
 			expected: "Hello Aru",
 		},
 	}
